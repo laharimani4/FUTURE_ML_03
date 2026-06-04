@@ -1,0 +1,52 @@
+resume_text = """
+Python Developer
+
+Skills:
+Python
+SQL
+Excel
+Power BI
+"""
+
+job_description = """
+Required Skills:
+Python
+Machine Learning
+SQL
+Pandas
+"""
+
+skills = [
+    "Python",
+    "Machine Learning",
+    "SQL",
+    "Pandas",
+    "Excel",
+    "Power BI"
+]
+
+resume_skills = []
+jd_skills = []
+
+for skill in skills:
+
+    if skill.lower() in resume_text.lower():
+        resume_skills.append(skill)
+
+    if skill.lower() in job_description.lower():
+        jd_skills.append(skill)
+
+matched = list(set(resume_skills) & set(jd_skills))
+missing = list(set(jd_skills) - set(resume_skills))
+
+score = (len(matched) / len(jd_skills)) * 100
+
+print("Match Score:", round(score,2), "%")
+
+print("\nMatched Skills:")
+for skill in matched:
+    print("-", skill)
+
+print("\nMissing Skills:")
+for skill in missing:
+    print("-", skill)
